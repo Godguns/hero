@@ -7,7 +7,7 @@ const merge = require('webpack-merge')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 exports.default={
-    entry:'./main/index.js',
+    entry:'./hero_main/index.js',
     output:{
         path:path.resolve(__dirname,'dist'),
         filename:'build.js'
@@ -31,7 +31,7 @@ exports.default={
     },
     plugins:[
         new HtmlWebpackPlugin({
-            template:'./main/index.html'
+            template:'./public/index.html'
         })
     ],
     devServer:{
@@ -43,6 +43,10 @@ exports.default={
             warnings: true,
             errors: true
           },
+    },
+    devtool:'source-map',
+    resolve:{
+        modules:[path.resolve(__dirname,'main'),path.resolve('node_modules')]
     }
 
        
