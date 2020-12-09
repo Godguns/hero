@@ -35,7 +35,7 @@ exports.default={
         })
     ],
     devServer:{
-        port:9000,
+        port:3000,
         hot: true,
         host:'localhost',
         contentBase: path.join(__dirname, "./dist"),

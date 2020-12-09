@@ -1,13 +1,14 @@
-import {obverse} from './obverse'
+import {observe} from './observe';
+import {arrayMethods} from './array.js'
 function defineReactive(data,key,value){
-    obverse(value)
+  observe(value)
     Object.defineProperty(data, key, {
         get() {
-          console.log('获取数据');
+          console.log('获取数df据',value);
           return value;
         },
         set(newValue) {
-          console.log('设置数据');
+          console.log('设置数据',newValue);
           if (newValue === value) return;
           value = newValue;
         }
@@ -16,7 +17,12 @@ function defineReactive(data,key,value){
 }
 export class Observer{
     constructor(data){
+      if(Array.isArray(data)){
+        data.__proto__=arrayMethods
+      }else{
         this.walk(data)
+      }
+      
     }
     walk(data){
         let keys = Object.keys(data);
