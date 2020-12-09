@@ -4,7 +4,7 @@ function defineReactive(data,key,value){
   observe(value)
     Object.defineProperty(data, key, {
         get() {
-          console.log('获取数df据',value);
+          console.log('获取数据',value);
           return value;
         },
         set(newValue) {

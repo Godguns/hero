@@ -2,6 +2,7 @@ import hero from "hero";
 let app = document.querySelector("#app");
 let hr = new hero({
   el: app,
+  fragment:{},
   data: {
     a: 1,
     b: 2,
@@ -9,8 +10,9 @@ let hr = new hero({
     data: {
       x: "9",
       y: "99",
+      z:[1,2,3]
     },
   },
 });
-hr.$options.data.x=2;
-console.log(hr.$options);
+
+console.log(hr);
