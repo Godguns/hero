@@ -26,7 +26,7 @@ export default class {
         });
       }
     }
-
-    this.$el.innerHTML = view;
+    let app = document.querySelector("#app");
+    app.innerHTML = view;
   }
 }
