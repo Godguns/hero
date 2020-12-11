@@ -1,0 +1,5 @@
+<hero-view>
+    <div>
+        <h1>Hello hero</h1>
+    </div>
+</hero-view>

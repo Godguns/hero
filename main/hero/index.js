@@ -2,24 +2,31 @@ import { initState } from "./observe";
 export default class {
   constructor(e) {
     this._init(e);
-   
-    if(this.el!==null){
-        this.$mount(e);
+    if (this.el !== null) {
+      this._render(this.$el.innerHTML, this.$options.data);
     }
   }
   _init(options) {
     let vm = this;
-    vm.el = options.el;
-    vm.fragment=options.fragment
+    vm.$el = options.el;
+    vm.$fragment = options.fragment;
     vm.$options = options.data;
     initState(vm);
   }
-  $mount(){
-        let vm = this;
-        let el = vm.$options.el; // 获取元素
+  /**
+   * _render渲染函数：
+   * 遍历dom节点，替换data数据
+   */
+  _render(view, data) {
+    for (const key in data) {
+      let reg = new RegExp(`{{${key}}}`, "g");
+      if (data.hasOwnProperty(key)) {
+        view = view.replace(reg, function () {
+          return data[key];
+        });
+      }
+    }
 
-
+    this.$el.innerHTML = view;
   }
-
-
 }

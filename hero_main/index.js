@@ -1,7 +1,7 @@
 import hero from "hero";
-let app = document.querySelector("#app");
+import APP from '../APP/APP.hero'
 let hr = new hero({
-  el: app,
+  el: APP,
   fragment:{},
   data: {
     a: 1,
@@ -14,5 +14,6 @@ let hr = new hero({
     },
   },
 });
+//hr.$options.data.a=33
 
-console.log(hr);
+//console.log(hr);

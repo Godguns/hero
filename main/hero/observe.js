@@ -9,9 +9,8 @@ export function initState(vm) {
 
 function initData(vm) {
   let data = vm.$options.data;
-
   //观测数据响应式
-  observe(vm.$options.data);
+  observe(vm.$options);
 }
 
 export function observe(data) {

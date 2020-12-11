@@ -26,6 +26,14 @@ exports.default={
                 test:/\.css$/,
                 use: ['style-loader','css-loader']
             },
+            {
+                test:/\.hero$/,
+                use:{
+                    loader: path.resolve('./hero-loader.js'),
+                    options: {/* ... */}
+                  }
+            }
+
 
         ]
     },
@@ -47,7 +55,8 @@ exports.default={
     devtool:'source-map',
     resolve:{
         modules:[path.resolve(__dirname,'main'),path.resolve('node_modules')]
-    }
+    },
+    mode:'development'
 
        
     
