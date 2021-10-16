@@ -1,16 +1,17 @@
 import { initState } from "./observe";
 export default class {
   constructor(e) {
+    console.log(e)
     this._init(e);
     if (this.el !== null) {
-      this._render(this.$el.innerHTML, this.$options.data);
+      this._render(this.$el, this.$options.data);
     }
   }
   _init(options) {
     let vm = this;
     vm.$el = options.el;
     vm.$fragment = options.fragment;
-    vm.$options = options.data;
+    vm.$options = options.state;
     initState(vm);
   }
   /**

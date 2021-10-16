@@ -1,5 +1,8 @@
-<hero-view>
+<heroView>
     <div>
-        <h1>Hello hero</h1>
+        <h1>{{y}}</h1>
     </div>
-</hero-view>
+</heroView>
+<script>
+    console.log("jjjjj")
+</script>

@@ -7,7 +7,34 @@
   \**********************/
 /***/ (() => {
 
-throw new Error("Module parse failed: Unexpected token (1:0)\nFile was processed with these loaders:\n * ./hero-loader.js\nYou may need an additional loader to handle the result of these loaders.\n> <div><h1>Hellohero</h1></div>");
+throw new Error("Module build failed (from ./hero-loader.js):\nTypeError: temp.replace is not a function\n    at Object.heroLoader (/Users/godguns/Desktop/hero/hero-loader.js:3:20)");
+
+/***/ }),
+
+/***/ "./hero_main/index.js":
+/*!****************************!*
+  !*** ./hero_main/index.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var hero__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! hero */ "./main/hero/index.js");
+/* harmony import */ var _APP_APP_hero__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../APP/APP.hero */ "./APP/APP.hero");
+/* harmony import */ var _APP_APP_hero__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_APP_APP_hero__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var hr = new hero__WEBPACK_IMPORTED_MODULE_0__.default({
+  el: _APP_APP_hero__WEBPACK_IMPORTED_MODULE_1___default()(),
+  fragment: {},
+  state: {
+    data: {
+      x: "9",
+      y: "99",
+      z: [1, 2, 3]
+    }
+  }
+});
 
 /***/ }),
 
@@ -15,28 +42,26 @@ throw new Error("Module parse failed: Unexpected token (1:0)\nFile was processed
 /*!*******************************!*
   !*** ./main/hero/Observer.js ***!
   \*******************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.Observer = void 0;
-
-var _observe = __webpack_require__(/*! ./observe */ "./main/hero/observe.js");
-
-var _array = __webpack_require__(/*! ./array.js */ "./main/hero/array.js");
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Observer": () => /* binding */ Observer
+/* harmony export */ });
+/* harmony import */ var _observe__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./observe */ "./main/hero/observe.js");
+/* harmony import */ var _array_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./array.js */ "./main/hero/array.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+
+
+
 function defineReactive(data, key, value) {
-  (0, _observe.observe)(value);
+  (0,_observe__WEBPACK_IMPORTED_MODULE_0__.observe)(value);
   Object.defineProperty(data, key, {
     get: function get() {
       console.log('获取数据', value);
@@ -55,7 +80,7 @@ var Observer = /*#__PURE__*/function () {
     _classCallCheck(this, Observer);
 
     if (Array.isArray(data)) {
-      data.__proto__ = _array.arrayMethods;
+      data.__proto__ = _array_js__WEBPACK_IMPORTED_MODULE_1__.arrayMethods;
     } else {
       this.walk(data);
     }
@@ -77,34 +102,28 @@ var Observer = /*#__PURE__*/function () {
   return Observer;
 }();
 
-exports.Observer = Observer;
-
 /***/ }),
 
 /***/ "./main/hero/array.js":
 /*!****************************!*
   !*** ./main/hero/array.js ***!
   \****************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "arrayMethods": () => /* binding */ arrayMethods
+/* harmony export */ });
+/* harmony import */ var _observe__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./observe */ "./main/hero/observe.js");
+ // 拷贝新的对象，用来查找老的方法, 不修改原型上的方法
 
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.arrayMethods = void 0;
-
-var _observe = __webpack_require__(/*! ./observe */ "./main/hero/observe.js");
-
-// 拷贝新的对象，用来查找老的方法, 不修改原型上的方法
 var arrayMethods = Object.create(Array.prototype);
-exports.arrayMethods = arrayMethods;
 var arr_methods = ["push", "pop", "shift", "unshift", "slice", "splice"]; //循环遍历arr_methods 来劫持原本的数组方法方法
 
 var observerArray = function observerArray(args) {
   for (var i = 0; i < args.length; i++) {
-    (0, _observe.observe)(args[i]);
+    (0,_observe__WEBPACK_IMPORTED_MODULE_0__.observe)(args[i]);
   }
 };
 
@@ -149,32 +168,32 @@ arr_methods.forEach(function (item) {
 /*!****************************!*
   !*** ./main/hero/index.js ***!
   \****************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.default = void 0;
-
-var _observe = __webpack_require__(/*! ./observe */ "./main/hero/observe.js");
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ _default
+/* harmony export */ });
+/* harmony import */ var _observe__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./observe */ "./main/hero/observe.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+
+
 var _default = /*#__PURE__*/function () {
   function _default(e) {
     _classCallCheck(this, _default);
 
+    console.log(e);
+
     this._init(e);
 
     if (this.el !== null) {
-      this._render(this.$el.innerHTML, this.$options.data);
+      this._render(this.$el, this.$options.data);
     }
   }
 
@@ -184,8 +203,8 @@ var _default = /*#__PURE__*/function () {
       var vm = this;
       vm.$el = options.el;
       vm.$fragment = options.fragment;
-      vm.$options = options.data;
-      (0, _observe.initState)(vm);
+      vm.$options = options.state;
+      (0,_observe__WEBPACK_IMPORTED_MODULE_0__.initState)(vm);
     }
     /**
      * _render渲染函数：
@@ -209,14 +228,15 @@ var _default = /*#__PURE__*/function () {
         _loop(key);
       }
 
-      this.$el.innerHTML = view;
+      var app = document.querySelector("#app");
+      app.innerHTML = view;
     }
   }]);
 
   return _default;
 }();
 
-exports.default = _default;
+
 
 /***/ }),
 
@@ -224,20 +244,17 @@ exports.default = _default;
 /*!******************************!*
   !*** ./main/hero/observe.js ***!
   \******************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.initState = initState;
-exports.observe = observe;
-
-var _Observer = __webpack_require__(/*! ./Observer.js */ "./main/hero/Observer.js");
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "initState": () => /* binding */ initState,
+/* harmony export */   "observe": () => /* binding */ observe
+/* harmony export */ });
+/* harmony import */ var _Observer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Observer.js */ "./main/hero/Observer.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 
 function initState(vm) {
   var opts = vm.$options;
@@ -259,7 +276,7 @@ function observe(data) {
     return;
   }
 
-  return new _Observer.Observer(data);
+  return new _Observer_js__WEBPACK_IMPORTED_MODULE_0__.Observer(data);
 }
 
 /***/ })
@@ -290,36 +307,51 @@ function observe(data) {
 /******/ 	}
 /******/ 	
 /************************************************************************/
-(() => {
-"use strict";
-/*!****************************!*
-  !*** ./hero_main/index.js ***!
-  \****************************/
-
-
-var _hero = _interopRequireDefault(__webpack_require__(/*! hero */ "./main/hero/index.js"));
-
-var _APP = _interopRequireDefault(__webpack_require__(/*! ../APP/APP.hero */ "./APP/APP.hero"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-var hr = new _hero["default"]({
-  el: _APP["default"],
-  fragment: {},
-  data: {
-    a: 1,
-    b: 2,
-    c: 3,
-    data: {
-      x: "9",
-      y: "99",
-      z: [1, 2, 3]
-    }
-  }
-}); //hr.$options.data.a=33
-//console.log(hr);
-})();
-
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => module['default'] :
+/******/ 				() => module;
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop)
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	// startup
+/******/ 	// Load entry module
+/******/ 	__webpack_require__("./hero_main/index.js");
+/******/ 	// This entry module used 'exports' so it can't be inlined
 /******/ })()
 ;
 //# sourceMappingURL=build.js.map

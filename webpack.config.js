@@ -28,10 +28,13 @@ exports.default={
             },
             {
                 test:/\.hero$/,
-                use:{
-                    loader: path.resolve('./hero-loader.js'),
-                    options: {/* ... */}
-                  }
+                use:[
+                    'babel-loader',
+                    {
+                        loader: path.resolve('./hero-loader.js'),
+                        
+                      }
+                ]
             }
 
 
